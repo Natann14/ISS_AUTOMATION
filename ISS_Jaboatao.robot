@@ -6,4 +6,3 @@ Resource  ISS_Jaboatao.resource
 Emitir Documento
     Abrir navegador
     Acessar pagina de relatorio
-    # comentario
