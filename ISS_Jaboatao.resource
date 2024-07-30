@@ -3,6 +3,7 @@ Library    OperatingSystem
 Library    DateTime
 Library    RPA.Browser.Selenium
 Library    RPA.Desktop
+Library    RPA.Windows
 
 *** Variables ***
 #${URL}  https://www.tinus.com.br/csp/JABOATAO/portal/index.csp
@@ -12,7 +13,7 @@ ${DATA_PAGAMENTO}  12
 
 *** Keywords ***
 Abrir navegador
-    Open Available Browser  url=${URL}  headless=${False}  maximized=${True} browser_selection=edge,chrome
+    Open Available Browser  url=${URL}  headless=${False}  maximized=${True}  browser_selection=Firefox
 
 Acessar pagina de relatorio
     
@@ -47,10 +48,11 @@ Acessar pagina de relatorio
     
     Input Text  xpath=//*[@id="Pagina"]/table/tbody/tr[4]/td[3]/input  12345
 
-    ${link}  Get Element Attribute  xpath=//*[@id="Pagina"]/p/input[1]  onclick
+    ${function}  Get Element Attribute  xpath=//*[@id="Pagina"]/p/input[1]  onclick
 
-    Execute Javascript  ${link}
-    Print To Pdf
+    Execute Javascript  ${function}
+    
+    #Print To Pdf
     # Clicando botao imprimir
     #Click Element   xpath=//*[@id="Pagina"]/p/input[1]
     
