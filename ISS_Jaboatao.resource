@@ -16,6 +16,18 @@ Abrir navegador
 
 Acessar pagina de relatorio
     
+    ${date}  Get Current Date    result_format=%m
+    ${date}  Convert To Integer    ${date}
+    ${next_month}  Evaluate  ${date} + 1
+    
+
+    IF    ${next_month} < 10
+        ${next_month}  Convert To String  ${next_month}
+        ${next_month}  Set Variable  0${next_month}
+    ELSE
+        ${next_month}  Convert To String  ${next_month}
+    END
+
     ${day}  Get Current Date  result_format=%d
     ${month}  Get Current Date  result_format=%m
     ${year}  Get Current Date  result_format=%Y
@@ -30,7 +42,7 @@ Acessar pagina de relatorio
     Select From List By Value  id=cboAnoComp  ${year}
 
     Select From List By Value  id=cboDiaVenc  ${DATA_PAGAMENTO}
-    Select From List By Value  id=cboMesVenc  08
+    Select From List By Value  id=cboMesVenc  ${next_month}
     Select From List By Value  id=cboAnoVenc  ${year}
     Select From List By Label  xpath=//*[@id="Pagina"]/table/tbody/tr[3]/td[3]/select  ISS Fonte
     
